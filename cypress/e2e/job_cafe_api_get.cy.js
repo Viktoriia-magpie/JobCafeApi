@@ -47,15 +47,15 @@ describe('Get jobs test', () => {
   })
 
   it('Search by the date', () => {
-    cy.searchByDate('date', params.date)
+    cy.searchByDate(params.date)
   })
 
   it('Search by the company', () => {
-    cy.searchByParameter('company', params.company)
+    cy.searchByCompany(params.company)
   })
 
   it('Search by the description', () => {
-    cy.searchByDescription('description', params.description)
+    cy.searchByDescription(params.description)
   })
 
   it('Search by combination of params', () => {

@@ -46,27 +46,38 @@ Cypress.Commands.add('searchByParameter', (param, value) => {
     })
 })
 
-Cypress.Commands.add('searchByDate', (param, value) => {
-    cy.request(`/?${param}=${value}`).then((response) => {
+Cypress.Commands.add('searchByCompany', (value) => {
+    cy.request(`/?company=${value}`).then((response) => {
         let resultsList = response.body.content
         console.log(resultsList)
         expect(response.status).equal(200)
-        expect(resultsList).to.not.be.empty
         for (let i = 0; i < resultsList.length; i++) {
-            expect(resultsList[i][param]).to.match(new RegExp(/^${value}/))
-            expect(resultsList[i][param]).to.match(/^\d{4}-\d{2}-\d{2}$/)
+            expect(resultsList[i].company.toLowerCase()).equal(value.toLowerCase())
         }
     })
 })
 
-Cypress.Commands.add('searchByDescription', (param, value) => {
-    cy.request(`/?${param}=${value}`).then((response) => {
+Cypress.Commands.add('searchByDate', (value) => {
+    cy.request(`/?date=${value}`).then((response) => {
         let resultsList = response.body.content
         console.log(resultsList)
         expect(response.status).equal(200)
         expect(resultsList).to.not.be.empty
         for (let i = 0; i < resultsList.length; i++) {
-            expect(resultsList[i][param]).to.match(new RegExp(value, 'i'))
+            expect(resultsList[i].date).to.match(new RegExp(`^${value}`))
+            expect(resultsList[i].date).to.match(/^\d{4}-\d{2}-\d{2}$/)
+        }
+    })
+})
+
+Cypress.Commands.add('searchByDescription', (value) => {
+    cy.request(`/?description=${value}`).then((response) => {
+        let resultsList = response.body.content
+        console.log(resultsList)
+        expect(response.status).equal(200)
+        expect(resultsList).to.not.be.empty
+        for (let i = 0; i < resultsList.length; i++) {
+            expect(resultsList[i].description).to.match(new RegExp(value, 'i'))
         }
     })
 })
@@ -78,8 +89,8 @@ Cypress.Commands.add('searchByCombinationParametres', (param1, value1, param2, v
         expect(response.status).equal(200)
         expect(resultsList).to.not.be.empty
         for (let i = 0; i < resultsList.length; i++) {
-            expect(resultsList[i][param1].toLowerCase()).contains(value1)
-            expect(resultsList[i][param2].toLowerCase()).contains(value2)
+            expect(resultsList[i][param1].toLowerCase()).equal(value1.toLowerCase())
+            expect(resultsList[i][param2].toLowerCase()).contains(value2.toLowerCase())
         }
     })
 })
