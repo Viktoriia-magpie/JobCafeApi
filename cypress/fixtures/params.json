@@ -1,0 +1,38 @@
+{
+    "data": [
+        {
+            "position": "QA",
+            "company": "legionqa_Soroka",
+            "location": "Toronto",
+            "seniority": "junior",
+            "link": "www.linkedin.com",
+            "description": "some text",
+            "time": "two hours ago",
+            "salary": "100k",
+            "date": "2020-06-06T12:00:00"
+        },
+        {
+            "position": "Java Developer",
+            "company": "legionqa_Soroka2",
+            "location": "New York",
+            "seniority": "senior",
+            "link": "www.linkedin.com",
+            "description": "some text",
+            "time": "two hours ago",
+            "salary": "100k",
+            "date": "2020-06-06T12:00:00"
+        }
+    ],
+    "params": {
+        "location": "Toronto",
+        "company": "legionqa",
+        "description": "International",
+        "id": "654286613f7d791f7b3e7b20",
+        "date": "2021-07-11"
+    },
+
+    "pagination": {
+        "pageNumber": 2,
+        "pageSize": 20
+    }
+}
