@@ -54,6 +54,7 @@ Cypress.Commands.add('searchByDate', (param, value) => {
         expect(resultsList).to.not.be.empty
         for (let i = 0; i < resultsList.length; i++) {
             expect(resultsList[i][param]).to.match(new RegExp(/^${value}/))
+            expect(resultsList[i][param]).to.match(/^\d{4}-\d{2}-\d{2}$/)
         }
     })
 })
